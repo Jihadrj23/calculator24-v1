@@ -151,7 +151,7 @@ export function BasicCalculator() {
             aria-selected={mode === m}
             onClick={() => setMode(m)}
             className={cn(
-              'h-10 rounded-xl px-4 text-sm font-medium sm:h-12 sm:px-5 sm:text-base capitalize transition-colors focus-visible:outline-2 focus-visible:outline-primary',
+              'inline-flex items-center justify-center text-center leading-none h-10 rounded-xl px-4 text-sm font-medium sm:h-12 sm:px-5 sm:text-base capitalize transition-colors focus-visible:outline-2 focus-visible:outline-primary',
               mode === m
                 ? 'border border-gloss-border bg-gradient-to-br from-gloss-from to-gloss-to text-primary-foreground shadow-gloss'
                 : 'border border-transparent bg-muted text-muted-foreground hover:text-foreground',
