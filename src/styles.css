@@ -42,10 +42,10 @@
   --color-glass-subtle: var(--glass-subtle);
   --color-royal-deep: oklch(0.424 0.199 265.638);
   --color-royal-bright: oklch(0.588 0.233 269.525);
-  --color-gloss-from: #00c6ff;
-  --color-gloss-to: #0072ff;
+  --color-gloss-from: #00d2ff;
+  --color-gloss-to: #3a7bd5;
   --color-gloss-border: rgb(255 255 255 / 30%);
-  --shadow-gloss: 0 4px 20px rgb(0 198 255 / 30%);
+  --shadow-gloss: 0 4px 20px rgb(0 210 255 / 35%);
   --shadow-glow: var(--shadow-glow);
 }
 
