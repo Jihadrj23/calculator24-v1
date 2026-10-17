@@ -50,7 +50,7 @@ export function TipCalculator() {
               className={cn(
                 'inline-flex items-center justify-center text-center leading-none h-11 rounded-xl border text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
                 tipValue === p
-                  ? 'border-gloss-border bg-gradient-to-br from-gloss-from to-gloss-to text-primary-foreground shadow-gloss'
+                  ? 'btn-glass-action'
                   : 'border-border glass text-foreground hover:bg-glass-hover',
               )}
             >
