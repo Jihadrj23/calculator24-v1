@@ -62,7 +62,7 @@ export function Segmented<T extends string>({
             aria-checked={active}
             onClick={() => onChange(option.value)}
             className={cn(
-              'flex h-10 flex-1 items-center justify-center rounded-lg px-3 text-sm font-semibold leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary',
+              'h-10 flex-1 rounded-lg px-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary',
               active ? 'border border-gloss-border bg-gradient-to-br from-gloss-from to-gloss-to text-primary-foreground shadow-gloss' : 'text-muted-foreground hover:text-foreground',
             )}
           >

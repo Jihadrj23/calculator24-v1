@@ -48,7 +48,7 @@ export function TipCalculator() {
               aria-pressed={tipValue === p}
               onClick={() => setTip(String(p))}
               className={cn(
-                'flex h-11 items-center justify-center rounded-xl border text-sm font-semibold leading-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+                'h-11 rounded-xl border text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
                 tipValue === p
                   ? 'border-gloss-border bg-gradient-to-br from-gloss-from to-gloss-to text-primary-foreground shadow-gloss'
                   : 'border-border glass text-foreground hover:bg-glass-hover',
