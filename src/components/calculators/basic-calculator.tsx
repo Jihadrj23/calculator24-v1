@@ -205,7 +205,7 @@ export function BasicCalculator() {
           type="button"
           onClick={() => press('=')}
           aria-label="Equals"
-          className="flex h-12 flex-1 items-center justify-center rounded-xl border border-gloss-border bg-gradient-to-br from-gloss-from to-gloss-to text-primary-foreground shadow-gloss transition-[filter,box-shadow,transform] duration-200 hover:-translate-y-px hover:brightness-105 hover:shadow-lg hover:shadow-gloss active:translate-y-0 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:h-16"
+          className="flex h-12 flex-1 items-center justify-center rounded-xl btn-glass-action transition-[filter,box-shadow,transform] duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:h-16"
         >
           <span aria-hidden="true" className="grid h-full w-full -translate-y-[0.17em] place-items-center text-2xl leading-none font-bold">=</span>
         </button>

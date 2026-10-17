@@ -137,3 +137,15 @@
     -moz-appearance: textfield;
   }
 }
+
+@utility btn-glass-action {
+  color: var(--primary);
+  background-image: linear-gradient(135deg, color-mix(in oklab, var(--primary) 22%, transparent), color-mix(in oklab, var(--primary) 8%, transparent));
+  background-color: color-mix(in oklab, var(--primary) 10%, transparent);
+  border: 1px solid color-mix(in oklab, var(--primary) 30%, var(--glass-border));
+  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 1px 0 0 oklch(1 0 0 / 10%) inset, 0 8px 24px -10px color-mix(in oklab, var(--primary) 45%, transparent), var(--shadow-glow);
+  &:hover {
+    background-color: color-mix(in oklab, var(--primary) 16%, transparent);
+  }
+}
