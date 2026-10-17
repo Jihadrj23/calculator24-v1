@@ -163,7 +163,7 @@ export function PasswordGenerator() {
         <button
           type="button"
           onClick={copy}
-          className="flex h-14 flex-1 items-center justify-center gap-3 rounded-xl border border-gloss-border bg-gradient-to-br from-gloss-from to-gloss-to px-4 text-lg font-bold text-primary-foreground shadow-gloss transition-[filter,box-shadow,transform] hover:-translate-y-px hover:brightness-105 hover:shadow-lg hover:shadow-gloss active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className="flex h-14 flex-1 items-center justify-center gap-3 rounded-xl px-4 text-lg font-bold btn-glass-action transition-[filter,box-shadow,transform] hover:-translate-y-px active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           {copied ? <Check className="size-5" aria-hidden="true" /> : <Copy className="size-5" aria-hidden="true" />}
           {copied ? 'Copied!' : 'Copy Password'}
