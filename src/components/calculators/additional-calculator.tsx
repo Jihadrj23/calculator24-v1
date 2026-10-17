@@ -59,7 +59,7 @@ function CalculatorForm({ config }: { config: ToolConfig }) {
       <p className="text-sm leading-6 text-muted-foreground">{config.note}</p>
       <FormError message={error} />
       <div className="flex gap-3">
-        <Button type="submit" className="inline-flex items-center justify-center gap-2 text-center h-14 min-w-0 flex-1 rounded-xl px-3 text-base font-bold whitespace-normal btn-glass-action transition-[filter,box-shadow,transform] hover:-translate-y-px sm:text-lg">{config.action}<ArrowRight aria-hidden="true" /></Button>
+        <button type="submit" className="inline-flex items-center justify-center gap-2 text-center h-14 min-w-0 flex-1 rounded-xl px-3 text-base font-bold whitespace-normal btn-glass-action transition-[filter,box-shadow,transform] hover:-translate-y-px active:scale-[0.99] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:text-lg [&_svg]:size-4 [&_svg]:shrink-0">{config.action}<ArrowRight aria-hidden="true" /></button>
         <Button type="button" variant="outline" onClick={reset} aria-label="Reset" className="h-14 w-16 shrink-0 rounded-xl border-border glass text-muted-foreground hover:bg-primary/10 hover:text-primary"><RotateCcw aria-hidden="true" /></Button>
       </div>
     </form>
