@@ -1,24 +1,55 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
+import { ToolPage } from '@/components/tool-ui'
+import { BasicCalculator } from '@/components/calculators/basic-calculator'
+import { HomeGuides } from '@/components/home/home-guides'
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
+export const Route = createFileRoute('/')({
+  head: () => {
+    const title = 'Calculator 24 - Free Online Math, Financial & Utility Calculators'
+    const description =
+      'Free online calculators: scientific, age, GPA, loan EMI, discount, BMI, currency & unit converters, Zakat, tip and more. Fast, simple and private.'
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { name: 'robots', content: 'index, follow' },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: '/' },
+        { property: 'og:site_name', content: 'Calculator 24' },
+        { property: 'og:locale', content: 'en_US' },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+      ],
+      links: [{ rel: 'canonical', href: '/' }],
+      scripts: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Calculator 24',
+            alternateName: ['Calculator24', 'calculator24.online'],
+            url: 'https://calculator24.online/',
+            description,
+            inLanguage: 'en',
+          }),
+        },
+      ],
+    }
+  },
+  component: Page,
+})
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Page() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+    <>
+      <ToolPage title="Basic & Scientific Calculator">
+        <BasicCalculator />
+      </ToolPage>
+      <HomeGuides />
+    </>
+  )
 }

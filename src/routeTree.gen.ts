@@ -10,33 +10,261 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgeCalculatorRouteImport } from './routes/age-calculator'
+import { Route as BmiCalculatorRouteImport } from './routes/bmi-calculator'
+import { Route as BmrCalculatorRouteImport } from './routes/bmr-calculator'
+import { Route as CompoundInterestCalculatorRouteImport } from './routes/compound-interest-calculator'
+import { Route as CurrencyConverterRouteImport } from './routes/currency-converter'
+import { Route as DateCalculatorRouteImport } from './routes/date-calculator'
+import { Route as DiscountCalculatorRouteImport } from './routes/discount-calculator'
+import { Route as FuelCostCalculatorRouteImport } from './routes/fuel-cost-calculator'
+import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
+import { Route as GstVatCalculatorRouteImport } from './routes/gst-vat-calculator'
+import { Route as LoanEmiCalculatorRouteImport } from './routes/loan-emi-calculator'
+import { Route as PasswordGeneratorRouteImport } from './routes/password-generator'
+import { Route as PregnancyDueDateCalculatorRouteImport } from './routes/pregnancy-due-date-calculator'
+import { Route as SalaryIncomeTaxCalculatorRouteImport } from './routes/salary-income-tax-calculator'
+import { Route as TipCalculatorRouteImport } from './routes/tip-calculator'
+import { Route as UnitConverterRouteImport } from './routes/unit-converter'
+import { Route as ZakatCalculatorRouteImport } from './routes/zakat-calculator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgeCalculatorRoute = AgeCalculatorRouteImport.update({
+  id: '/age-calculator',
+  path: '/age-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BmiCalculatorRoute = BmiCalculatorRouteImport.update({
+  id: '/bmi-calculator',
+  path: '/bmi-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BmrCalculatorRoute = BmrCalculatorRouteImport.update({
+  id: '/bmr-calculator',
+  path: '/bmr-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompoundInterestCalculatorRoute =
+  CompoundInterestCalculatorRouteImport.update({
+    id: '/compound-interest-calculator',
+    path: '/compound-interest-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CurrencyConverterRoute = CurrencyConverterRouteImport.update({
+  id: '/currency-converter',
+  path: '/currency-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DateCalculatorRoute = DateCalculatorRouteImport.update({
+  id: '/date-calculator',
+  path: '/date-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscountCalculatorRoute = DiscountCalculatorRouteImport.update({
+  id: '/discount-calculator',
+  path: '/discount-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuelCostCalculatorRoute = FuelCostCalculatorRouteImport.update({
+  id: '/fuel-cost-calculator',
+  path: '/fuel-cost-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GpaCalculatorRoute = GpaCalculatorRouteImport.update({
+  id: '/gpa-calculator',
+  path: '/gpa-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GstVatCalculatorRoute = GstVatCalculatorRouteImport.update({
+  id: '/gst-vat-calculator',
+  path: '/gst-vat-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanEmiCalculatorRoute = LoanEmiCalculatorRouteImport.update({
+  id: '/loan-emi-calculator',
+  path: '/loan-emi-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PasswordGeneratorRoute = PasswordGeneratorRouteImport.update({
+  id: '/password-generator',
+  path: '/password-generator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PregnancyDueDateCalculatorRoute =
+  PregnancyDueDateCalculatorRouteImport.update({
+    id: '/pregnancy-due-date-calculator',
+    path: '/pregnancy-due-date-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SalaryIncomeTaxCalculatorRoute =
+  SalaryIncomeTaxCalculatorRouteImport.update({
+    id: '/salary-income-tax-calculator',
+    path: '/salary-income-tax-calculator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TipCalculatorRoute = TipCalculatorRouteImport.update({
+  id: '/tip-calculator',
+  path: '/tip-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnitConverterRoute = UnitConverterRouteImport.update({
+  id: '/unit-converter',
+  path: '/unit-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZakatCalculatorRoute = ZakatCalculatorRouteImport.update({
+  id: '/zakat-calculator',
+  path: '/zakat-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/age-calculator': typeof AgeCalculatorRoute
+  '/bmi-calculator': typeof BmiCalculatorRoute
+  '/bmr-calculator': typeof BmrCalculatorRoute
+  '/compound-interest-calculator': typeof CompoundInterestCalculatorRoute
+  '/currency-converter': typeof CurrencyConverterRoute
+  '/date-calculator': typeof DateCalculatorRoute
+  '/discount-calculator': typeof DiscountCalculatorRoute
+  '/fuel-cost-calculator': typeof FuelCostCalculatorRoute
+  '/gpa-calculator': typeof GpaCalculatorRoute
+  '/gst-vat-calculator': typeof GstVatCalculatorRoute
+  '/loan-emi-calculator': typeof LoanEmiCalculatorRoute
+  '/password-generator': typeof PasswordGeneratorRoute
+  '/pregnancy-due-date-calculator': typeof PregnancyDueDateCalculatorRoute
+  '/salary-income-tax-calculator': typeof SalaryIncomeTaxCalculatorRoute
+  '/tip-calculator': typeof TipCalculatorRoute
+  '/unit-converter': typeof UnitConverterRoute
+  '/zakat-calculator': typeof ZakatCalculatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/age-calculator': typeof AgeCalculatorRoute
+  '/bmi-calculator': typeof BmiCalculatorRoute
+  '/bmr-calculator': typeof BmrCalculatorRoute
+  '/compound-interest-calculator': typeof CompoundInterestCalculatorRoute
+  '/currency-converter': typeof CurrencyConverterRoute
+  '/date-calculator': typeof DateCalculatorRoute
+  '/discount-calculator': typeof DiscountCalculatorRoute
+  '/fuel-cost-calculator': typeof FuelCostCalculatorRoute
+  '/gpa-calculator': typeof GpaCalculatorRoute
+  '/gst-vat-calculator': typeof GstVatCalculatorRoute
+  '/loan-emi-calculator': typeof LoanEmiCalculatorRoute
+  '/password-generator': typeof PasswordGeneratorRoute
+  '/pregnancy-due-date-calculator': typeof PregnancyDueDateCalculatorRoute
+  '/salary-income-tax-calculator': typeof SalaryIncomeTaxCalculatorRoute
+  '/tip-calculator': typeof TipCalculatorRoute
+  '/unit-converter': typeof UnitConverterRoute
+  '/zakat-calculator': typeof ZakatCalculatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/age-calculator': typeof AgeCalculatorRoute
+  '/bmi-calculator': typeof BmiCalculatorRoute
+  '/bmr-calculator': typeof BmrCalculatorRoute
+  '/compound-interest-calculator': typeof CompoundInterestCalculatorRoute
+  '/currency-converter': typeof CurrencyConverterRoute
+  '/date-calculator': typeof DateCalculatorRoute
+  '/discount-calculator': typeof DiscountCalculatorRoute
+  '/fuel-cost-calculator': typeof FuelCostCalculatorRoute
+  '/gpa-calculator': typeof GpaCalculatorRoute
+  '/gst-vat-calculator': typeof GstVatCalculatorRoute
+  '/loan-emi-calculator': typeof LoanEmiCalculatorRoute
+  '/password-generator': typeof PasswordGeneratorRoute
+  '/pregnancy-due-date-calculator': typeof PregnancyDueDateCalculatorRoute
+  '/salary-income-tax-calculator': typeof SalaryIncomeTaxCalculatorRoute
+  '/tip-calculator': typeof TipCalculatorRoute
+  '/unit-converter': typeof UnitConverterRoute
+  '/zakat-calculator': typeof ZakatCalculatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/age-calculator'
+    | '/bmi-calculator'
+    | '/bmr-calculator'
+    | '/compound-interest-calculator'
+    | '/currency-converter'
+    | '/date-calculator'
+    | '/discount-calculator'
+    | '/fuel-cost-calculator'
+    | '/gpa-calculator'
+    | '/gst-vat-calculator'
+    | '/loan-emi-calculator'
+    | '/password-generator'
+    | '/pregnancy-due-date-calculator'
+    | '/salary-income-tax-calculator'
+    | '/tip-calculator'
+    | '/unit-converter'
+    | '/zakat-calculator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/age-calculator'
+    | '/bmi-calculator'
+    | '/bmr-calculator'
+    | '/compound-interest-calculator'
+    | '/currency-converter'
+    | '/date-calculator'
+    | '/discount-calculator'
+    | '/fuel-cost-calculator'
+    | '/gpa-calculator'
+    | '/gst-vat-calculator'
+    | '/loan-emi-calculator'
+    | '/password-generator'
+    | '/pregnancy-due-date-calculator'
+    | '/salary-income-tax-calculator'
+    | '/tip-calculator'
+    | '/unit-converter'
+    | '/zakat-calculator'
+  id:
+    | '__root__'
+    | '/'
+    | '/age-calculator'
+    | '/bmi-calculator'
+    | '/bmr-calculator'
+    | '/compound-interest-calculator'
+    | '/currency-converter'
+    | '/date-calculator'
+    | '/discount-calculator'
+    | '/fuel-cost-calculator'
+    | '/gpa-calculator'
+    | '/gst-vat-calculator'
+    | '/loan-emi-calculator'
+    | '/password-generator'
+    | '/pregnancy-due-date-calculator'
+    | '/salary-income-tax-calculator'
+    | '/tip-calculator'
+    | '/unit-converter'
+    | '/zakat-calculator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgeCalculatorRoute: typeof AgeCalculatorRoute
+  BmiCalculatorRoute: typeof BmiCalculatorRoute
+  BmrCalculatorRoute: typeof BmrCalculatorRoute
+  CompoundInterestCalculatorRoute: typeof CompoundInterestCalculatorRoute
+  CurrencyConverterRoute: typeof CurrencyConverterRoute
+  DateCalculatorRoute: typeof DateCalculatorRoute
+  DiscountCalculatorRoute: typeof DiscountCalculatorRoute
+  FuelCostCalculatorRoute: typeof FuelCostCalculatorRoute
+  GpaCalculatorRoute: typeof GpaCalculatorRoute
+  GstVatCalculatorRoute: typeof GstVatCalculatorRoute
+  LoanEmiCalculatorRoute: typeof LoanEmiCalculatorRoute
+  PasswordGeneratorRoute: typeof PasswordGeneratorRoute
+  PregnancyDueDateCalculatorRoute: typeof PregnancyDueDateCalculatorRoute
+  SalaryIncomeTaxCalculatorRoute: typeof SalaryIncomeTaxCalculatorRoute
+  TipCalculatorRoute: typeof TipCalculatorRoute
+  UnitConverterRoute: typeof UnitConverterRoute
+  ZakatCalculatorRoute: typeof ZakatCalculatorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +276,147 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/age-calculator': {
+      id: '/age-calculator'
+      path: '/age-calculator'
+      fullPath: '/age-calculator'
+      preLoaderRoute: typeof AgeCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bmi-calculator': {
+      id: '/bmi-calculator'
+      path: '/bmi-calculator'
+      fullPath: '/bmi-calculator'
+      preLoaderRoute: typeof BmiCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bmr-calculator': {
+      id: '/bmr-calculator'
+      path: '/bmr-calculator'
+      fullPath: '/bmr-calculator'
+      preLoaderRoute: typeof BmrCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compound-interest-calculator': {
+      id: '/compound-interest-calculator'
+      path: '/compound-interest-calculator'
+      fullPath: '/compound-interest-calculator'
+      preLoaderRoute: typeof CompoundInterestCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/currency-converter': {
+      id: '/currency-converter'
+      path: '/currency-converter'
+      fullPath: '/currency-converter'
+      preLoaderRoute: typeof CurrencyConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/date-calculator': {
+      id: '/date-calculator'
+      path: '/date-calculator'
+      fullPath: '/date-calculator'
+      preLoaderRoute: typeof DateCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discount-calculator': {
+      id: '/discount-calculator'
+      path: '/discount-calculator'
+      fullPath: '/discount-calculator'
+      preLoaderRoute: typeof DiscountCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fuel-cost-calculator': {
+      id: '/fuel-cost-calculator'
+      path: '/fuel-cost-calculator'
+      fullPath: '/fuel-cost-calculator'
+      preLoaderRoute: typeof FuelCostCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gpa-calculator': {
+      id: '/gpa-calculator'
+      path: '/gpa-calculator'
+      fullPath: '/gpa-calculator'
+      preLoaderRoute: typeof GpaCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gst-vat-calculator': {
+      id: '/gst-vat-calculator'
+      path: '/gst-vat-calculator'
+      fullPath: '/gst-vat-calculator'
+      preLoaderRoute: typeof GstVatCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan-emi-calculator': {
+      id: '/loan-emi-calculator'
+      path: '/loan-emi-calculator'
+      fullPath: '/loan-emi-calculator'
+      preLoaderRoute: typeof LoanEmiCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/password-generator': {
+      id: '/password-generator'
+      path: '/password-generator'
+      fullPath: '/password-generator'
+      preLoaderRoute: typeof PasswordGeneratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pregnancy-due-date-calculator': {
+      id: '/pregnancy-due-date-calculator'
+      path: '/pregnancy-due-date-calculator'
+      fullPath: '/pregnancy-due-date-calculator'
+      preLoaderRoute: typeof PregnancyDueDateCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-income-tax-calculator': {
+      id: '/salary-income-tax-calculator'
+      path: '/salary-income-tax-calculator'
+      fullPath: '/salary-income-tax-calculator'
+      preLoaderRoute: typeof SalaryIncomeTaxCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tip-calculator': {
+      id: '/tip-calculator'
+      path: '/tip-calculator'
+      fullPath: '/tip-calculator'
+      preLoaderRoute: typeof TipCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unit-converter': {
+      id: '/unit-converter'
+      path: '/unit-converter'
+      fullPath: '/unit-converter'
+      preLoaderRoute: typeof UnitConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zakat-calculator': {
+      id: '/zakat-calculator'
+      path: '/zakat-calculator'
+      fullPath: '/zakat-calculator'
+      preLoaderRoute: typeof ZakatCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgeCalculatorRoute: AgeCalculatorRoute,
+  BmiCalculatorRoute: BmiCalculatorRoute,
+  BmrCalculatorRoute: BmrCalculatorRoute,
+  CompoundInterestCalculatorRoute: CompoundInterestCalculatorRoute,
+  CurrencyConverterRoute: CurrencyConverterRoute,
+  DateCalculatorRoute: DateCalculatorRoute,
+  DiscountCalculatorRoute: DiscountCalculatorRoute,
+  FuelCostCalculatorRoute: FuelCostCalculatorRoute,
+  GpaCalculatorRoute: GpaCalculatorRoute,
+  GstVatCalculatorRoute: GstVatCalculatorRoute,
+  LoanEmiCalculatorRoute: LoanEmiCalculatorRoute,
+  PasswordGeneratorRoute: PasswordGeneratorRoute,
+  PregnancyDueDateCalculatorRoute: PregnancyDueDateCalculatorRoute,
+  SalaryIncomeTaxCalculatorRoute: SalaryIncomeTaxCalculatorRoute,
+  TipCalculatorRoute: TipCalculatorRoute,
+  UnitConverterRoute: UnitConverterRoute,
+  ZakatCalculatorRoute: ZakatCalculatorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

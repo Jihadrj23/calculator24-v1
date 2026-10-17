@@ -1,0 +1,153 @@
+import { additionalCalculatorGuides } from './additional-calculator-guides'
+
+export type CalculatorGuideContent = {
+  heading: string
+  intro: string
+  steps: { title: string; text: string }[]
+  formula: string
+  formulaNote: string
+  example: string
+  tips: string[]
+  faqs: { question: string; answer: string }[]
+  related: string[]
+}
+
+export const calculatorGuides: Record<string, CalculatorGuideContent> = {
+  ...additionalCalculatorGuides,
+  'Age Calculator': {
+    heading: 'Understand your age, down to the day',
+    intro: 'Calendar age expresses the time between a birth date and a reference date in years, months, and days. It is useful for personal milestones and checking age on a particular application or event date. Unlike dividing days by 365, a calendar calculation accounts for varying month lengths and leap years.',
+    steps: [
+      { title: 'Enter your date of birth', text: 'Choose the day, month, and year of birth. The date must not be later than the reference date.' },
+      { title: 'Choose the reference date', text: 'Use today for your current age, or another date to find your age at a past or future event.' },
+      { title: 'Read the calendar and total values', text: 'The main answer gives years, months, and days. The additional totals express the same date interval in days, weeks, and smaller time units.' },
+    ],
+    formula: 'Calendar age = reference date − birth date\nTotal days = elapsed UTC date interval ÷ 86,400,000 ms',
+    formulaNote: 'Calendar years and months are counted as calendar units, not fixed blocks of 365 and 30 days. Time totals come from whole date boundaries.',
+    example: 'Someone born on 1 January 2000 is 1 year, 1 month, and 2 days old on 3 February 2001. The elapsed interval is 399 days; dividing that total by 365 would not express the same exact calendar age.',
+    tips: ['Use the official cutoff date when checking an application requirement.', 'Check the birth year carefully, particularly when selecting an older date.', 'Use total days when you need an elapsed interval rather than a calendar age.', 'Hours, minutes, and seconds are date-based equivalents, not a precise birth-time measurement.'],
+    faqs: [{ question: 'Can I calculate age on a future date?', answer: 'Yes. Choose the future date as the reference date, keeping the birth date earlier than or equal to it.' }, { question: 'Why not just divide the number of days by 365?', answer: 'Leap years and months of different lengths make that an approximation. A calendar age keeps the year, month, and remaining-day parts separate.' }],
+    related: ['/date-calculator', '/bmr-calculator', '/'],
+  },
+  'GPA / Grade Calculator': {
+    heading: 'Make sense of your Bangladesh-style GPA',
+    intro: 'This grade calculator estimates GPA on a 5.0 scale using the subject groups shown in the tool. It combines nine main-subject grade points and a fourth-subject bonus. It is an estimate for the displayed Bangladesh-style SSC and HSC setup, not a universal university GPA calculator.',
+    steps: [{ title: 'Select your subject group', text: 'Choose Science, Business, or Humanities and review the listed subjects before entering grades.' }, { title: 'Enter each grade', text: 'Select grades for all nine main subjects and the designated fourth subject. A+ is 5, A is 4, A− is 3.5, B is 3, C is 2, D is 1, and F is 0.' }, { title: 'Review the result and bonus', text: 'Points above 2 in the fourth subject contribute a bonus. A failing main subject forces the estimated GPA to 0; the overall result is capped at 5.' }],
+    formula: 'Bonus = max(0, fourth-subject points − 2)\nGPA = min(5, (main-subject points + bonus) ÷ 9)',
+    formulaNote: 'This formula applies only when no main subject is graded F. The selected group uses nine main subjects; the fourth subject is not an extra denominator entry.',
+    example: 'If all nine main subjects are A (4 points each), their total is 36. An A+ in the fourth subject adds 5 − 2 = 3 bonus points. The estimated GPA is (36 + 3) ÷ 9 = 4.33.',
+    tips: ['Confirm that the subject list matches your examination setup.', 'Use awarded letter grades rather than raw marks.', 'Recheck subject selections after switching groups.', 'Treat the fourth-subject bonus separately from the main-subject average.'],
+    faqs: [{ question: 'Does a fourth-subject F automatically fail the result?', answer: 'Not in this tool. It adds no bonus, but an F in any main subject forces the estimated GPA to 0.' }, { question: 'Can I use this for university CGPA?', answer: 'No. Credit-weighted university CGPA requires a different calculation and your institution’s grading scale.' }],
+    related: ['/', '/age-calculator', '/date-calculator'],
+  },
+  'Loan / EMI Calculator': {
+    heading: 'Understand the real shape of a loan',
+    intro: 'An equated monthly instalment (EMI) is a fixed monthly payment that covers principal and interest. This calculator estimates repayments for a loan with a constant annual interest rate and a fixed term. Comparing monthly payments alongside total interest helps you see the trade-off between affordability now and cost over time.',
+    steps: [{ title: 'Enter the amount borrowed', text: 'Use the principal, excluding any charges you intend to pay separately. Keep every money figure in the same currency.' }, { title: 'Add the annual rate and term', text: 'Enter the annual interest percentage and the loan duration as a whole number of months. For example, three years is 36 months.' }, { title: 'Compare payment and total cost', text: 'Review the monthly EMI, total interest, and total amount payable. Change one input at a time to compare scenarios.' }],
+    formula: 'EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)\nr = annual rate ÷ 12 ÷ 100\nAt 0% interest: EMI = P ÷ n',
+    formulaNote: 'P is the principal, r is the monthly interest rate, and n is the number of monthly payments. Total payable is EMI × n; interest is total payable minus P.',
+    example: 'Borrowing 12,000 at 12% annual interest for 12 months gives an estimated EMI of 1,066.19. Using the unrounded payment, total repayment is approximately 12,794.23 and total interest is 794.23.',
+    tips: ['Compare total interest as well as the monthly EMI.', 'Convert years to months before entering the duration.', 'Ask the lender about fees, insurance, and early-repayment charges.', 'Use the quoted loan rate, not an assumed rate from an unrelated product.'],
+    faqs: [{ question: 'Why does a longer term usually cost more?', answer: 'At the same principal and positive interest rate, stretching repayment leaves money outstanding for longer. The monthly payment falls, but total interest generally rises.' }, { question: 'Can I calculate an interest-free loan?', answer: 'Yes. Enter 0 for the annual rate. The principal is then divided evenly by the number of months.' }],
+    related: ['/discount-calculator', '/currency-converter', '/'],
+  },
+  'Discount & Percentage Calculator': {
+    heading: 'See what a discount actually saves',
+    intro: 'A percentage discount reduces an original price by a stated fraction. This tool shows both the money saved and the final price, so you can compare offers by the amount you pay rather than the size of the sale label. It handles a single percentage discount on one price.',
+    steps: [{ title: 'Enter the original price', text: 'Use a price above zero, before the discount. All results remain in the same currency as your input.' }, { title: 'Enter the discount percentage', text: 'Use a percentage from 0 to 100. Enter 20 for a 20% discount, not 0.20.' }, { title: 'Compare the saving and final price', text: 'The result separates the amount removed from the price from the amount still payable.' }],
+    formula: 'Savings = original price × discount ÷ 100\nFinal price = original price − savings',
+    formulaNote: 'Equivalently, final price = original price × (1 − discount ÷ 100). The percentage is applied to the original price you entered.',
+    example: 'An item priced at 2,000 with a 20% discount saves 400. The final price is 1,600, which is 80% of the original amount.',
+    tips: ['Compare final prices across shops, not just percentage labels.', 'Include delivery and applicable charges separately.', 'For successive discounts, apply the next percentage to the already discounted price.', 'Keep decimal values until the final amount is rounded.'],
+    faqs: [{ question: 'Are two discounts added together?', answer: 'Usually not when applied successively. 20% off and then 10% off means paying 0.8 × 0.9 = 72% of the original price: a total reduction of 28%.' }, { question: 'What do 0% and 100% discounts mean?', answer: 'At 0%, the price is unchanged. At 100%, the entire entered price is removed and the final price is zero, before any separate charges.' }],
+    related: ['/tip-calculator', '/loan-emi-calculator', '/'],
+  },
+  'BMI Calculator': {
+    heading: 'Understand BMI beyond the number',
+    intro: 'Body Mass Index (BMI) compares weight with height using a simple ratio. It is commonly used as an adult screening measure, but it does not measure body fat directly or diagnose an individual’s health. The result is most useful when understood alongside its limitations.',
+    steps: [{ title: 'Enter weight in kilograms', text: 'Use a recent measurement. Convert pounds to kilograms first if necessary.' }, { title: 'Enter height in centimetres', text: 'For a height of 1.75 metres, enter 175. A unit mismatch can dramatically change the result.' }, { title: 'Read the BMI and adult category', text: 'The tool uses thresholds of below 18.5, 18.5 to below 25, 25 to below 30, and 30 or above.' }],
+    formula: 'BMI = weight (kg) ÷ height (m)²\nHeight (m) = height (cm) ÷ 100',
+    formulaNote: 'Adult category labels are Underweight, Healthy, Overweight, and Obese. Classification uses the calculated value; a displayed value rounded near a boundary may look different.',
+    example: 'At 70 kg and 175 cm, BMI = 70 ÷ (1.75 × 1.75) = 22.86, displayed as 22.9. This falls in the tool’s Healthy adult category.',
+    tips: ['Check both units before calculating.', 'Do not treat a category label as a diagnosis.', 'Muscle mass and body composition can affect interpretation.', 'Discuss concerns with a qualified health professional rather than choosing a target from BMI alone.'],
+    faqs: [{ question: 'Does BMI measure body fat?', answer: 'No. It uses only weight and height and cannot distinguish fat, muscle, or other contributors to body weight.' }, { question: 'Is a Healthy category a guarantee of good health?', answer: 'No. BMI is only one screening measure. Medical history, measurements, and other health indicators also matter.' }],
+    related: ['/bmr-calculator', '/unit-converter', '/age-calculator'],
+  },
+  'Currency Converter': {
+    heading: 'Read a currency conversion with confidence',
+    intro: 'A currency conversion estimates how much an amount in one currency represents in another. This converter supports the currencies listed in its selectors and uses rates referenced to the US dollar. It is useful for comparisons and budgeting, while the amount actually charged depends on your provider.',
+    steps: [{ title: 'Enter the amount', text: 'Use zero or a positive value in the source currency.' }, { title: 'Choose the source and destination', text: 'Select the From and To currencies. The swap control reverses the direction of the conversion.' }, { title: 'Check the rate information', text: 'Review the per-unit rate and its update date. If retrieval fails, the tool labels its approximate reference rates instead.' }],
+    formula: 'Cross-rate = target USD rate ÷ source USD rate\nConverted amount = amount × cross-rate',
+    formulaNote: 'Both rates express the units of their respective currency per US dollar. Dividing them gives the target units per source unit.',
+    example: 'For illustration only, if 1 USD equals 120 units of a target currency, then 100 USD equals 12,000 units. This hypothetical rate is not a current market quote; use the rate shown in the tool for your conversion.',
+    tips: ['Check the rate update date before relying on an estimate.', 'Compare the provider’s final quote, including any fees.', 'Confirm the direction: buying and selling currencies are not interchangeable.', 'Avoid treating approximate fallback rates as live rates.'],
+    faqs: [{ question: 'Why does my bank show a different amount?', answer: 'Your bank can apply its own exchange rate, spread, and fees. The tool is a reference conversion, not a binding transaction quote.' }, { question: 'Are the displayed rates always live?', answer: 'No. The app retrieves rates when available, but uses labelled approximate reference rates if retrieval fails. Check the note below the conversion.' }],
+    related: ['/loan-emi-calculator', '/discount-calculator', '/tip-calculator'],
+  },
+  'Unit Converter': {
+    heading: 'Convert measurements without losing meaning',
+    intro: 'Unit conversion expresses the same quantity in a different unit. This tool covers length, weight, and temperature using the choices listed in each category. Length and weight use multiplicative factors; temperature also needs an offset because the scales have different zero points.',
+    steps: [{ title: 'Select a measurement category', text: 'Choose length, weight, or temperature. Units can only be converted within the same category.' }, { title: 'Choose the units and enter a value', text: 'Select the source and destination units, keeping the source unit consistent with your measured value.' }, { title: 'Read the equivalent measurement', text: 'The result expresses the same quantity in the destination unit. Retain enough precision for your task.' }],
+    formula: 'Length/weight: value × source factor ÷ target factor\n°F = (°C × 9 ÷ 5) + 32\nK = °C + 273.15',
+    formulaNote: 'Length uses metres as a reference; weight uses kilograms. Temperature is converted through Celsius, including the appropriate offset.',
+    example: 'One metre is approximately 3.28084 feet. For temperature, 0°C × 9 ÷ 5 + 32 = 32°F; the same temperature is 273.15 K.',
+    tips: ['Check the category as well as the unit abbreviation.', 'Do not use a simple multiplication factor for Celsius to Fahrenheit.', 'Round only the final result when converting several related quantities.', 'Use a precision appropriate to the measuring instrument.'],
+    faqs: [{ question: 'Why is Celsius to Fahrenheit not a simple ratio?', answer: 'The scales have different zero points. A Celsius value is multiplied by 9/5 and then shifted by 32 to obtain Fahrenheit.' }, { question: 'Can I convert length to weight?', answer: 'No. They measure different properties. A conversion between them would require additional physical information, such as geometry and density.' }],
+    related: ['/bmi-calculator', '/bmr-calculator', '/'],
+  },
+  'Zakat Calculator': {
+    heading: 'Estimate Zakat with clear assumptions',
+    intro: 'This tool estimates 2.5% of eligible net wealth when the net amount is positive and meets the nisab you enter. It adds the asset values shown in the form and subtracts liabilities due. Determining eligible assets, the relevant nisab, and the lunar-year requirement remains your responsibility.',
+    steps: [{ title: 'Value the listed assets', text: 'Enter cash and bank balances, gold value, silver value, and investment or business asset values in one consistent currency. Gold and silver fields take money values, not weights.' }, { title: 'Enter liabilities and nisab', text: 'Add the liabilities due that apply to your situation, and enter a current nisab value using the same currency.' }, { title: 'Check eligibility before using the estimate', text: 'Review the net wealth and payable estimate. Confirm the holding-period requirement and applicable religious guidance separately.' }],
+    formula: 'Net wealth = max(0, total assets − liabilities due)\nIf net wealth > 0 and ≥ nisab:\nEstimated Zakat = net wealth × 0.025',
+    formulaNote: 'If net wealth is zero or below the entered threshold, the estimate is zero. An omitted nisab is treated as zero, so it must be entered to make a meaningful threshold check.',
+    example: 'With assets worth 100,000, eligible liabilities due of 10,000, and an entered nisab of 85,000, net wealth is 90,000. The tool estimates 90,000 × 2.5% = 2,250, subject to eligibility requirements being satisfied.',
+    tips: ['Use one currency for assets, liabilities, and nisab.', 'Enter a current nisab rather than leaving the threshold blank.', 'Do not enter gold or silver weights in the value fields.', 'Confirm the lunar-year condition and treatment of debts with a trusted qualified adviser.'],
+    faqs: [{ question: 'Does the tool calculate the current nisab automatically?', answer: 'No. You supply its monetary value. Leaving it blank effectively uses a zero threshold and can make any positive net wealth appear eligible.' }, { question: 'Does an estimate confirm that Zakat is due?', answer: 'No. The calculator only applies the entered values and threshold. Asset eligibility, holding period, and other applicable rulings need separate confirmation.' }],
+    related: ['/currency-converter', '/discount-calculator', '/'],
+  },
+  'Tip Calculator': {
+    heading: 'Split a bill clearly and fairly',
+    intro: 'A tip calculator separates the gratuity from the bill and shows the combined amount per person. This tool applies your chosen percentage to the entered bill, then divides the bill and tip equally among the people you specify. It works for a quick restaurant estimate or another shared bill.',
+    steps: [{ title: 'Enter the bill amount', text: 'Decide whether your chosen tipping base includes tax or other charges, then enter that amount consistently.' }, { title: 'Choose a tip percentage', text: 'Use a preset or enter a custom percentage. The default is 15%; that is a starting setting, not a recommended rate for every location.' }, { title: 'Set the number of people', text: 'Enter a whole number from 1 to 100. Review both the total tip and the bill-plus-tip share per person.' }],
+    formula: 'Tip = bill × percentage ÷ 100\nTotal = bill + tip\nPer-person total = total ÷ people',
+    formulaNote: 'The tip is also divided evenly to show each person’s gratuity share. The tool does not assign unequal shares or allocate rounding remainders.',
+    example: 'For a bill of 100 with a 15% tip, the tip is 15 and the total is 115. Split between two people, each person pays 57.50, including a tip share of 7.50.',
+    tips: ['Check whether a service charge is already included.', 'Use local customs and your preference rather than assuming the default suits every bill.', 'Agree on equal sharing before dividing a group bill.', 'For a cash split, account for any small remainder after rounding.'],
+    faqs: [{ question: 'Can I enter a custom tip?', answer: 'Yes. Use the custom percentage rather than a preset when you want another rate.' }, { question: 'Why might rounded shares not add up exactly?', answer: 'Dividing a total can produce fractions smaller than the displayed money precision. Assign any remaining small amount when settling the bill.' }],
+    related: ['/discount-calculator', '/currency-converter', '/'],
+  },
+  'Date & Time Calculator': {
+    heading: 'Plan around dates, not approximations',
+    intro: 'Date arithmetic helps compare milestones, plan an interval, or find a date a certain number of days away. This tool offers a difference between two dates and an add-or-subtract-days mode. Its inputs are calendar dates, not times of day.',
+    steps: [{ title: 'Choose your calculation mode', text: 'Select a date difference to compare two dates, or add/subtract to move forward or backward from a base date.' }, { title: 'Enter the dates or day count', text: 'In difference mode, enter both dates. For a date shift, enter the base date and a whole number of calendar days.' }, { title: 'Read the appropriate result', text: 'Use calendar years, months, and days for a calendar interval, or total days for an elapsed day count. Difference mode orders the dates chronologically.' }],
+    formula: 'Elapsed days = later date − earlier date\nShifted date = base date ± calendar days',
+    formulaNote: 'Months are calendar units with variable lengths. The elapsed day count excludes counting both endpoints as full days; the same date has an interval of zero days.',
+    example: 'From 1 January 2024 to 31 January 2024, the interval is 30 days, or 0 years, 0 months, and 30 days. Adding 30 calendar days to 1 January 2024 also gives 31 January 2024.',
+    tips: ['Use total days when a requirement is stated in days.', 'Check whether a deadline uses calendar days or working days.', 'Enter whole days; fractional day counts are rounded down by the tool.', 'Confirm any inclusive counting rules for an official deadline.'],
+    faqs: [{ question: 'Does this count working days?', answer: 'No. It counts calendar days, including weekends and holidays.' }, { question: 'Why is 1 January to 31 January 30 days, not 31?', answer: 'The tool measures elapsed time between the two dates. Counting both dates inclusively is a different convention and would add one day.' }],
+    related: ['/age-calculator', '/loan-emi-calculator', '/'],
+  },
+  'BMR & Calorie Calculator': {
+    heading: 'Understand your estimated energy needs',
+    intro: 'Basal Metabolic Rate (BMR) estimates the energy your body uses at rest. Total Daily Energy Expenditure (TDEE) multiplies that baseline by an activity factor to estimate daily maintenance needs. This tool uses the Mifflin–St Jeor equation; neither figure is a direct measurement or an individual diet prescription.',
+    steps: [{ title: 'Enter the equation inputs', text: 'Choose the male or female equation option, and enter age, height in centimetres, and weight in kilograms. The form accepts ages from 15 to 100.' }, { title: 'Choose an activity level', text: 'The factors are 1.2 sedentary, 1.375 light, 1.55 moderate, 1.725 active, and 1.9 very active. Choose the closest reflection of your usual activity.' }, { title: 'Interpret the estimates', text: 'Review BMR and maintenance calories. The lower-calorie figures subtract 250 and 500 kcal from maintenance and should not be treated as guaranteed weight-loss outcomes.' }],
+    formula: 'BMR = 10w + 6.25h − 5a + s\ns = +5 (male equation) or −161 (female equation)\nTDEE = BMR × activity factor',
+    formulaNote: 'w is weight in kilograms, h is height in centimetres, and a is age in years. Results are rounded to whole kilocalories per day.',
+    example: 'For the male equation at age 30, 175 cm, and 70 kg: BMR = 700 + 1,093.75 − 150 + 5 = 1,648.75 kcal/day. With moderate activity (1.55), maintenance is approximately 2,556 kcal/day.',
+    tips: ['Use a realistic activity level rather than a single unusually active day.', 'Expect actual energy needs to differ from an equation estimate.', 'Do not interpret BMR as a personalised minimum food intake.', 'Seek individual guidance for weight management or a medical condition.'],
+    faqs: [{ question: 'What is the difference between BMR and maintenance calories?', answer: 'BMR estimates resting energy expenditure. Maintenance, or TDEE, adds an activity assumption to estimate total daily energy use.' }, { question: 'Will eating 500 calories less guarantee the displayed weight loss?', answer: 'No. Real weight change varies with physiology, activity, measurement error, and adaptation. The displayed deficit is a simplified estimate, not a guaranteed outcome.' }],
+    related: ['/bmi-calculator', '/unit-converter', '/age-calculator'],
+  },
+  'Secure Password Generator': {
+    heading: 'Build a stronger password habit',
+    intro: 'A randomly generated password is harder to predict than one built from familiar names or patterns. This generator uses your browser’s cryptographic random source and the character sets you enable. A strong password is only one part of account security: uniqueness and multi-factor authentication matter too.',
+    steps: [{ title: 'Choose the password length', text: 'Select between 8 and 64 characters. The default is 16; choose a length supported by the service where you will use it.' }, { title: 'Select permitted character sets', text: 'Enable uppercase, lowercase, numbers, and/or symbols to match the service’s rules. At least one set must remain enabled.' }, { title: 'Generate and store it safely', text: 'Generate a new password, copy it, and store it in a trusted password manager. Never reuse it across accounts.' }],
+    formula: 'Displayed strength estimate ≈ length × log₂(pool size)\nRandom source: crypto.getRandomValues',
+    formulaNote: 'The generator includes at least one character from each enabled set, fills the rest from the combined pool, and shuffles. The strength indicator is a rough estimate, not a security audit.',
+    example: 'With length 8 and only numbers enabled, the output has eight characters drawn from 23456789. This numeric-only example illustrates the character pool; longer passwords with broader permitted sets are generally harder to guess.',
+    tips: ['Use a different password for every account.', 'Store passwords in a trusted manager rather than an unprotected note.', 'Enable multi-factor authentication when the service offers it.', 'Check the service’s length and symbol restrictions before generating.'],
+    faqs: [{ question: 'Does the generated password leave the browser?', answer: 'The generation itself runs locally and does not send the password to a server. Copying places it on the clipboard, and submitting it to another service shares it with that service.' }, { question: 'Why are some letters and digits missing?', answer: 'The character pools omit visually ambiguous characters such as uppercase I and O, lowercase l, and digits 0 and 1 to make passwords easier to read accurately.' }],
+    related: ['/', '/unit-converter', '/date-calculator'],
+  },
+}
